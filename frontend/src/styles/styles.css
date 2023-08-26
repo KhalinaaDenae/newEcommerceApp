@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;700&family=Paytone+One&display=swap");
+
+/* header */
+.header {
+  position: relative;
+  width: 100vw;
+  height: 60vh; /* Make the header full-screen */
+  background-image: url("../healthcare.jpeg"); /* Replace with the actual image URL */
+  background-size: cover;
+  background-position: center;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* Transparent black overlay */
+}
+
+.text {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+  color: #ff0202;
+  font-size: 5.25rem;
+  text-shadow: 3px 0px 7px rgba(0, 0, 0, 0.55),
+    -3px 0px 7px rgba(55, 53, 46, 0.273), 0px 4px 7px rgba(5, 4, 1, 0.8);
+  font-weight: bold;
+  font-family: "Paytone One", sans-serif;
+  width: 60vw;
+  padding: 40px;
+}
+
+/* media queries */
+@media (max-width: 768px) {
+  .header {
+    height: 40vh; /* Adjust header height for smaller screens */
+  }
+
+  .text {
+    font-size: 3rem; /* Decrease font size for smaller screens */
+    width: 80vw; /* Adjust width for smaller screens */
+    bottom: 4px; /* Adjust vertical position for smaller screens */
+    left: 8px; /* Adjust horizontal position for smaller screens */
+  }
+}
+
+/* facts */
+
+.facts-section {
+  text-align: center;
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 80px;
+  width: 100vw;
+}
+
+.facts-header {
+  font-size: 2.8rem;
+  font-weight: 700;
+  text-align: left;
+  margin-left: 28px;
+  font-family: "Montserrat", sans-serif;
+  text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1),
+    0px 18px 23px rgba(0, 0, 0, 0.1);
+  color: #ff0202;
+}
+
+.facts-images {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.fact-image {
+  flex: 1;
+  max-width: 30%;
+}
+
+.fact-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .facts-images {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .fact-image {
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .facts-header {
+    font-size: 20px;
+    margin-left: 0;
+  }
+}

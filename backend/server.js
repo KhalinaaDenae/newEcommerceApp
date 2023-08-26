@@ -3,7 +3,7 @@ import express from 'express'
 import dotenv from 'dotenv'
 import cookieParser from 'cookie-parser'
 dotenv.config()
-import connectDB from './db'
+import connectDB from '/db.js';
 import productRoutes from './routes/productRoutes.js'
 import userRoutes from './routes/userRoutes.js'
 import orderRoutes from './routes/orderRoutes.js';

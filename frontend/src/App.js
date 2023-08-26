@@ -1,38 +1,39 @@
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { Container } from 'react-bootstrap';
-import { Outlet } from 'react-router-dom';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import { logout } from './slices/authSlice';
+import React, { useState } from 'react';
+import SearchBar from '../src/component/SearchBar';
+import ProviderList from '../src/component/ProviderList';
+import Filters from '../src/component/Filters';
+import providersData from '../src/data/providers.json';
+import '../src/screens/LandingPage'
+import LandingPage from '../src/screens/LandingPage';
 
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
 
 const App = () => {
-  const dispatch = useDispatch();
+  // const [searchTerm, setSearchTerm] = useState('');
+  const [selectedFilters, setSelectedFilters] = useState({
+    category: '',
+    gender: '',
+    availability: '',
+  });
 
-  useEffect(() => {
-    const expirationTime = localStorage.getItem('expirationTime');
-    if (expirationTime) {
-      const currentTime = new Date().getTime();
-
-      if (currentTime > expirationTime) {
-        dispatch(logout());
-      }
-    }
-  }, [dispatch]);
+  // Assuming providersData contains the JSON data you provided
+  const filteredProviders = providersData.filter(provider => {
+    // const matchesSearch = provider.name.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesCategory = selectedFilters.category === '' || provider.specialty === selectedFilters.category;
+    const matchesGender = selectedFilters.gender === '' || provider.gender === selectedFilters.gender;
+    const matchesAvailability = selectedFilters.availability === '' || provider.availability.includes(selectedFilters.availability);
+    
+    return  matchesCategory && matchesGender && matchesAvailability;
+  });
 
   return (
     <>
-      <ToastContainer />
-      <Header />
-      <main>
-        <Container>
-          <Outlet />
-        </Container>
-      </main>
-      <Footer />
+   <div>
+    < LandingPage />
+      {/* <SearchBar setSearchTerm={setSearchTerm} /> */}
+      <Filters setSelectedFilters={setSelectedFilters} />
+      <ProviderList providers={filteredProviders} />
+    </div>
     </>
   );
 };
